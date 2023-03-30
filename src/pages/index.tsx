@@ -73,6 +73,31 @@ export default function Home() {
     }
   }
 
+  function setColor() {
+    if (airPollution == null) {
+      return;
+    }
+
+    const pm2_5 = airPollution.list[0].components.pm2_5;
+
+    if (pm2_5 >= 0 && pm2_5 <= 10) {
+      // Good
+      return "bg-green-500";
+    } else if (pm2_5 > 10 && pm2_5 <= 25) {
+      // Fair
+      return "bg-lime-500";
+    } else if (pm2_5 > 25 && pm2_5 <= 50) {
+      // Moderate
+      return "bg-yellow-500";
+    } else if (pm2_5 > 50 && pm2_5 <= 75) {
+      // Poor
+      return "bg-orange-500";
+    } else {
+      // Very Poor
+      return "bg-red-500";
+    }
+  }
+
   useEffect(() => {
     console.log(airPollution);
   }, [airPollution]);
@@ -106,7 +131,9 @@ export default function Home() {
 
           {airPollution ? (
             <>
-              <div className="m-5 inline-block rounded-lg bg-yellow-500 p-5 text-4xl md:text-6xl">
+              <div
+                className={`m-5 inline-block rounded-lg ${setColor()} p-5 text-4xl md:text-6xl`}
+              >
                 {airPollution.list[0].components.pm2_5}{" "}
                 <b>
                   μg/m<sup>3</sup>
