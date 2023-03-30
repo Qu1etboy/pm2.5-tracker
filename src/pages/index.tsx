@@ -36,7 +36,7 @@ export default function Home() {
 
   async function getAirPollution(lat: string, lon: string) {
     const res = await axios.get(
-      `http://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OPEN_WEATHER_API}`
+      `https://api.openweathermap.org/data/2.5/air_pollution?lat=${lat}&lon=${lon}&appid=${process.env.NEXT_PUBLIC_OPEN_WEATHER_API}`
     );
 
     const data = await res.data;
