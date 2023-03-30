@@ -32,6 +32,7 @@ interface Data {
 
 export default function Home() {
   const [airPollution, setAirPollution] = useState<AirPollution | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   async function getAirPollution(lat: string, lon: string) {
     const res = await axios.get(
@@ -45,14 +46,31 @@ export default function Home() {
 
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(setPosition);
+      navigator.geolocation.getCurrentPosition(setPosition, showError);
     } else {
-      console.log("Geolocation is not supported by this browser.");
+      setError("Geolocation is not supported by this browser.");
     }
   }
 
   function setPosition(position: any) {
     getAirPollution(position.coords.latitude, position.coords.longitude);
+  }
+
+  function showError(error: any) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        setError("User denied the request for Geolocation.");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        setError("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        setError("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        setError("An unknown error occurred.");
+        break;
+    }
   }
 
   useEffect(() => {
@@ -151,6 +169,8 @@ export default function Home() {
                 </table>
               </div>
             </>
+          ) : error ? (
+            <div className="mt-5 text-red-500">{error}</div>
           ) : (
             // Loading spinner
             <div role="status">
