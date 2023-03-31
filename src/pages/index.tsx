@@ -118,7 +118,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="text-gray-50">
-        <div className="container mx-auto flex flex-col items-center">
+        <div className="container mx-auto flex flex-col items-center px-3">
           <h1 className="my-5 text-4xl font-bold md:text-6xl lg:text-8xl">
             <span className="text-emerald-500">
               PM <sub>2.5</sub>
@@ -139,7 +139,7 @@ export default function Home() {
                   μg/m<sup>3</sup>
                 </b>
               </div>
-              <div className="w-full overflow-scroll">
+              <div className="w-full overflow-scroll text-sm md:text-base">
                 <table className="mx-auto">
                   <thead>
                     <tr>
@@ -221,13 +221,13 @@ export default function Home() {
             </div>
           )}
 
-          <div className="w-full overflow-scroll">
+          <div className="w-full overflow-scroll text-sm md:text-base">
             <table className="mx-auto my-10">
               <thead>
                 <tr>
-                  <th>Qualitative name</th>
-                  <th>Index</th>
-                  <th colSpan={4}>
+                  <th className="px-6">Qualitative name</th>
+                  <th className="px-6">Index</th>
+                  <th className="px-6" colSpan={4}>
                     Pollutant concentration in μg/m<sup>3</sup>
                   </th>
                 </tr>
@@ -253,7 +253,7 @@ export default function Home() {
                   <td>CO</td>
                 </tr>
                 <tr className="bg-neutral-800">
-                  <td className="px-6 py-3">Good</td>
+                  <td className="px-6 py-3 text-green-500">Good</td>
                   <td className="px-6 py-3">1</td>
                   <td className="px-6 py-3">0-20</td>
                   <td className="px-6 py-3">0-40</td>
@@ -263,7 +263,7 @@ export default function Home() {
                   <td className="px-6 py-3">0-4400</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-3">Fair</td>
+                  <td className="px-6 py-3 text-lime-500">Fair</td>
                   <td className="px-6 py-3">2</td>
                   <td className="px-6 py-3">20-80</td>
                   <td className="px-6 py-3">40-70</td>
@@ -273,7 +273,7 @@ export default function Home() {
                   <td className="px-6 py-3">4400-9400</td>
                 </tr>
                 <tr className="bg-neutral-800">
-                  <td className="px-6 py-3">Moderate</td>
+                  <td className="px-6 py-3 text-yellow-500">Moderate</td>
                   <td className="px-6 py-3">3</td>
                   <td className="px-6 py-3">80-250</td>
                   <td className="px-6 py-3">70-150</td>
@@ -283,7 +283,7 @@ export default function Home() {
                   <td className="px-6 py-3">9400-12400</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-3">Poor</td>
+                  <td className="px-6 py-3 text-orange-500">Poor</td>
                   <td className="px-6 py-3">4</td>
                   <td className="px-6 py-3">250-350</td>
                   <td className="px-6 py-3">150-200</td>
@@ -293,7 +293,7 @@ export default function Home() {
                   <td className="px-6 py-3">12400-15400</td>
                 </tr>
                 <tr className="bg-neutral-800 ">
-                  <td className="px-6 py-3">Very Poor</td>
+                  <td className="px-6 py-3 text-red-500">Very Poor</td>
                   <td className="px-6 py-3">5</td>
                   <td className="px-6 py-3">&gt;350</td>
                   <td className="px-6 py-3">&gt;200</td>
@@ -305,7 +305,7 @@ export default function Home() {
               </tbody>
             </table>
           </div>
-          <footer className="mb-2 text-gray-300">
+          <footer className="mb-2 flex flex-col text-center text-gray-300 md:flex-row">
             <span className="mr-3">
               Powered by{" "}
               <a
